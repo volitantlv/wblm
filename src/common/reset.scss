@@ -1,0 +1,677 @@
+// 统一浏览器的样式
+html, body, div, span, object, iframe,h1, h2, 
+h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, 
+em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, 
+ol, ul, li,fieldset, form, label, legend,table, caption, tbody, 
+tfoot,thead,tr, th, td,article, aside, canvas, details, figcaption, 
+figure, footer, header, hgroup, menu, nav, section, summary,time, mark, 
+audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    outline-style:none;/*FF*/ 
+}
+body,html{
+    background-color: #f8f8f8!important;
+}
+body {
+    font-family: Microsoft Yahei;
+    cursor:point;
+    //background-color: #F8F8F8;
+    -webkit-overflow-scrolling:touch;
+}
+
+div{
+    box-sizing: border-box;
+    color: #333;
+}
+a{
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+a:hover,a:focus{
+    text-decoration:none;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.block{
+    display: block;
+}
+.none{
+    display: none;
+}
+input, select {
+    vertical-align:middle;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+/*css为clearfix，清除浮动*/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix:after{clear:both;} 
+.clearfix{ 
+    *zoom:1;/*IE/7/6*/
+}
+
+.die{
+    color: #14c591 !important;
+}
+.zhang{
+    color: #ff6c47 !important;
+}
+.van-nav-bar{
+    z-index: 100 !important;
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, .1) !important;
+    margin-bottom: 5px;
+}
+input:placeholder{
+    font-size: 12px;
+}
+
+/*Trad 页面 tab资金 tab 交易部分 点击状态 样式*/ 
+.secondtab .van-tabs__wrap .van-tab--active{
+    background-color:rgba(86,134,211,0.14);
+}
+.van-tabs__line{
+    border-radius: 0!important;
+    margin-bottom: 6px;
+}
+.van-toast--text .van-toast__text{
+    color: #fff;
+}
+.van-slider{
+    width: 60%;
+    display: inline-block;
+}
+.Business .van-tabs__wrap .van-tabs__nav .van-tabs__line{
+    border-radius: 10px!important;
+    width: 30px!important;
+}
+.Business .van-tabs__wrap .van-tabs__nav .van-tab .van-ellipsis{
+    font-size: 16px;
+}
+.Business .van-tabs__wrap .van-tabs__nav .van-tab--active .van-ellipsis{
+    font-weight: 600;
+}
+.secondtab .van-tabs__wrap .van-tabs__nav .van-tabs__line{
+    border-radius: 10px!important;
+    width: 26px!important;
+}
+/*买涨弹窗样式*/
+
+.van-popup .van-tabs .van-tabs__content .btone .jbq .van-stepper .van-stepper__input{
+    display: none;
+}
+.van-popup .van-tabs .van-tabs__content .btone .jbq{
+    position: relative;
+}
+.van-popup .van-tabs .van-tabs__content .btone .van-slider{
+    width:65%;
+}
+.van-popup .van-tabs .van-tabs__content .btone .van-slider:before{
+    content: "";
+    width: 26px;
+    height: 4px;
+    background-color: #FF6C47;
+    display: inline-block;
+    position: absolute;
+    left: -25px;
+    display: none;
+}
+.van-popup .van-tabs .van-tabs__content .btone .jbq .van-stepper .van-stepper__minus{
+    position: absolute;
+    left: 30px;
+    background-color: rgba(255,108,71,0.15);
+    border-radius: 0;
+    color: rgb(255,108,71);
+    width: 20px;
+    height: 20px;
+}
+.van-popup .van-tabs .van-tabs__content .btone .jbq .van-stepper .van-stepper__plus{
+    position: absolute;
+    right: 30px;
+    background-color: rgba(255,108,71,0.15);
+    border-radius: 0;
+    color: rgb(255,108,71);
+    width: 20px;
+    height: 20px;
+}
+.van-popup .van-tabs .van-tabs__content .btone .van-slider .custom-button{
+    width: 14px;
+    height: 14px;
+    background-color: #FF6C47;
+    border-radius: 50%;
+}
+.van-popup .van-tabs .van-tabs__content .btone .win .van-stepper .van-stepper__plus{
+    margin-left: 30%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+  .van-popup .van-tabs .van-tabs__content .btone .win .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+.van-popup .van-tabs .van-tabs__content .btone .win .van-stepper input{
+    margin-left: 34%;
+    background-color: transparent;
+    color: rgba(255,108,71,1);
+  }  
+.van-popup .van-tabs .van-tabs__content .btone .loss .van-stepper .van-stepper__plus{
+    margin-left: 30%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+  .van-popup .van-tabs .van-tabs__content .btone .loss .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }  
+.van-popup .van-tabs .van-tabs__content .btone .loss .van-stepper input{
+    margin-left: 34%;
+    background-color: transparent;
+    color: rgba(20,197,145,1);
+  } 
+/*买跌弹窗样式*/
+.van-popup .van-tabs .van-tabs__content .bttwo .jbq .van-stepper .van-stepper__input{
+    display: none;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .jbq{
+    position: relative;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .van-slider{
+    width:65%;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .van-slider:before{
+    content: "";
+    width: 26px;
+    height: 4px;
+    background-color: #14C591;
+    display: inline-block;
+    position: absolute;
+    left: -25px;
+    display: none;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .jbq .van-stepper .van-stepper__minus{
+    position: absolute;
+    left: 30px;
+    background-color: rgba(20,197,145,0.15);
+    border-radius: 0;
+    color: rgb(20,197,145);
+    width: 20px;
+    height: 20px;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .jbq .van-stepper .van-stepper__plus{
+    position: absolute;
+    right: 30px;
+    background-color: rgba(20,197,145,0.15);
+    border-radius: 0;
+    color: rgb(20,197,145);
+    width: 20px;
+    height: 20px;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .van-slider .custom-button{
+    width: 14px;
+    height: 14px;
+    background-color: #14C591;
+    border-radius: 50%;
+}
+.van-popup .van-tabs .van-tabs__content .bttwo .win .van-stepper .van-stepper__plus{
+    margin-left: 30%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+  .van-popup .van-tabs .van-tabs__content .bttwo .win .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+.van-popup .van-tabs .van-tabs__content .bttwo .win .van-stepper input{
+    margin-left: 34%;
+    background-color: transparent;
+    color: rgba(255,108,71,1);
+  }  
+.van-popup .van-tabs .van-tabs__content .bttwo .loss .van-stepper .van-stepper__plus{
+    margin-left: 30%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }
+  .van-popup .van-tabs .van-tabs__content .bttwo .loss .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+  }  
+.van-popup .van-tabs .van-tabs__content .bttwo .loss .van-stepper input{
+    margin-left: 34%;
+    background-color: transparent;
+    color: rgba(20,197,145,1);
+  } 
+.app .app .van-tabs .van-tabs__wrap::after{
+display: none;
+}
+
+
+.pop_down .van-tabs--line .van-tabs__wrap{
+    height: auto;
+    margin-top: 15px;
+  }
+  .pop_down .van-tabs{
+      background-color: #fff!important;
+  }  
+  .pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab:nth-child(1){
+    margin-left: 30px;
+    padding-right: 0;
+    padding-left: 0;
+    background:rgba(238,238,238,1);
+    border-radius:5px 0px 0px 5px;
+}  
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab:nth-child(1) span{
+    border-radius:5px 0px 0px 5px;
+    font-size:14px;
+}
+
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab:nth-child(2){
+    margin-right: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    background:rgba(238,238,238,1);
+    border-radius:0px 5px 5px 0px;
+}
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab span div{
+    color: #666;
+    height: 36px;
+    line-height: 36px;
+}
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab:nth-child(2) span{
+    border-radius:0px 5px 5px 0px;
+    font-size:14px;
+}
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav{
+    padding-bottom: 0;
+    height: 36px;
+}
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tabs__line{
+    display: none;
+} 
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab--active .van-ellipsis div .one{
+    background:rgba(255,108,71,1);
+    color:#fff;
+    height: 36px;
+    line-height: 36px;
+}
+.pop_down .van-tabs .van-tabs__wrap .van-tabs__nav .van-tab--active .van-ellipsis div .two{
+    background:rgba(20,197,145,1);
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+ }
+.van-popup .van-tabs .van-tabs__content .van-tab__pane .van-radio-group .van-radio .van-radio__icon{
+    position: absolute;
+    top:8px;
+}
+.van-popup .van-tabs .van-tabs__content .van-tab__pane .van-radio-group .van-radio .van-radio__icon img{
+    width: 20px;
+    height: 20px;
+}
+.van-popup .van-tabs .van-tabs__content .van-tab__pane .van-radio-group .van-radio .van-radio__icon .van-icon{
+    width: 18px;
+    height: 18px;
+}
+.van-popup .van-tabs .van-tabs__content .van-tab__pane .van-radio-group .van-radio .van-radio__label{
+    margin-left: 33px;
+    font-size: 14px;
+    color: rgb(51,51,51);
+}
+.van-popup .van-tabs .van-tabs__content .van-tab__pane .van-radio-group .van-radio:nth-child(2) .van-radio__label{
+    margin-left: 23px;
+    color: #666;
+  }
+/*完善信息 认证页面*/
+.attestation .at_form .van-cell .van-cell__title{
+    text-align: left;
+    width: auto;
+    margin-right: 24px;
+}
+.attestation .at_form .van-cell .van-cell__value .van-field__body input::placeholder{
+    font-size: 14px;
+    color:rgba(153,153,153,.5);
+}
+.attestation .at_form .van-cell .van-cell__title span{
+    color:rgba(86,134,211,1);
+    font-size: 16px;
+}
+.display .popcontent .tryagain{
+    width: 163px;
+    height: 44px;
+    color: rgba(153,153,153,1);
+    border: 1px solid rgba(153,153,153,1);
+    margin-top: 28px;
+}   
+.drawcontent .moneynumber .van-cell .van-cell__value .van-field__body .van-field__control::placeholder{
+    color:rgba(221,221,221,1);
+    font-size: 16px;
+}
+.drawcontent .detailsinfo .van-cell .van-cell__title{
+    text-align: left;
+    width: auto;
+}
+.drawcontent .detailsinfo .van-cell .van-cell__title span{
+    font-size: 14px;
+    color:rgba(102,102,102,1);
+}
+.drawcontent .detailsinfo .userinput .van-cell__value .van-field__body .van-field__control{
+    color:#666;
+    font-size: 14px;
+    padding-left: 50px;
+}
+.drawcontent .detailsinfo .cardinput .van-cell__value .van-field__body .van-field__control{
+    color:rgba(51,51,51,1);
+    font-size: 14px;
+    padding-left: 50px;
+}
+.drawcontent .detailsinfo .bankinput .van-cell__value .van-field__body .van-field__control{
+    color:rgba(51,51,51,1);
+    font-size: 14px;
+    padding-left: 7px;
+}
+.drawcontent .detailsinfo .van-cell:not(:last-child)::after{
+    display: none;
+}
+.drawcontent .moneynumber::after{
+    display: none;
+}
+/*首页*/
+.home .ProfitExpress .van-tabs__wrap .van-tabs__nav .van-tab span{
+    font-weight: 600;
+}
+.home .ProfitExpress .van-tabs__wrap .van-tabs__nav .van-tabs__line{
+    width: 50px!important;
+    background-color: #5686D3;
+    height: 4px;
+    border-radius: 3px!important;
+    bottom:18px;
+}
+/*盈利排行*/
+.app .profitranking .van-tabs__wrap .van-tabs__nav .van-tabs__line{
+    display: none;
+}
+.app .profitranking .van-tabs__wrap .van-tabs__nav .van-tab--active{
+    font-weight: 600;
+}
+.app .profitranking .van-tabs__wrap .van-tabs__nav .van-tab  .van-ellipsis{
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    overflow: inherit;
+}
+.app .profitranking .van-tabs__wrap::after{
+    display: none;
+}
+.app .profitranking .van-tabs__wrap .van-tabs__nav .van-tab:nth-child(1) .van-ellipsis:after{
+  content:"";
+  height: 30px;
+  width: 1px;
+  background-color: #eee;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: -2%;
+}
+/*充值界面*/
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup{
+    box-shadow:0px 1px 4px 0px rgba(221,221,221,1);
+    width: 92%;
+    margin-left: 4%;
+    height: 176px;
+}
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup .van-cell--clickable:active{
+    background-color: rgba(86,134,211,.09);
+}
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup .van-cell--clickable:active div{
+    color:rgba(86,134,211,1);
+}
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__title{
+    text-align: left;
+    padding-left: 34px;
+    color: rgba(102,102,102,1);
+}
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__title:after{
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #5686D3;
+    border-left: 2px solid #5686D3;
+    transform: rotate(135deg);
+    float: right;
+    margin-right: 16px;
+    position: relative;
+    top: 6px;
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item{
+    z-index: 11;
+    box-shadow: 0px 1px 4px 0px rgba(221,221,221,1);
+    justify-content: flex-start;
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title .van-ellipsis{
+    overflow: inherit;
+    width: 100%;
+    text-align: left;
+    color: rgba(51,51,51,1);
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item:after{
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #5686D3;
+    border-left: 2px solid #5686D3;
+    transform: rotate(-135deg);
+    float:right;
+    position: relative;
+    top: 0px;
+    right:39px;
+    border-bottom: transparent;
+    border-right: transparent;
+}
+ .commercial .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title{
+    width: 100%;
+    text-align: left;
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title:before{
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-image: url("../assets/user-active.png");
+    background-size: 20px 20px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    float: left;
+}
+.commercial .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__value{
+   display: none;
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title--down::after{
+    display: none;
+}
+.commercial .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title:after{
+    display: none;
+}
+
+/*提现界面*/
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup{
+    box-shadow:0px 1px 4px 0px rgba(221,221,221,1);
+    width: 92%;
+    margin-left: 4%;
+    height: 176px;
+}
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup .van-cell--clickable:active{
+    background-color:rgba(86,134,211,.09);
+}
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup .van-cell--clickable:active div{
+    color:#5686D3;
+}
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__title{
+    text-align: left;
+    padding-left: 34px;
+}
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__title:after{
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #5686D3;
+    border-left: 2px solid #5686D3;
+    transform: rotate(135deg);
+    float: right;
+    margin-right: 16px;
+    position: relative;
+    top: 6px;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item{
+    z-index: 11;
+    box-shadow: 0px 1px 4px 0px rgba(221,221,221,1);
+    justify-content: flex-start;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title .van-ellipsis{
+    overflow: inherit;
+    width: 100%;
+    text-align: left;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item:after{
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #5686D3;
+    border-left: 2px solid #5686D3;
+    transform: rotate(-135deg);
+    float:right;
+    position: relative;
+    top: 3px;
+    right:39px;
+    border-bottom: transparent;
+    border-right: transparent;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title{
+    width: 100%;
+    text-align: left;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title:before{
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-image: url("../assets/user-active.png");
+    background-size: 20px 20px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    float: left;
+}
+.withdraw .van-dropdown-menu .van-dropdown-item .van-popup .van-cell .van-cell__value{
+   display: none;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title--down::after{
+    display: none;
+}
+.withdraw .van-dropdown-menu .van-dropdown-menu__item .van-dropdown-menu__title::after{
+    display: none;
+}
+/*登陆界面*/
+.clause .van-checkbox__icon .van-icon{
+    width: 16px;
+    height: 16px;
+    line-height: 12px;
+}
+.clause .van-checkbox__icon .van-icon-success:before{
+    font-size: 12px;
+}
+.notice div:nth-child(3) p{
+    margin: 0;
+}
+
+ /*交易持仓部分点击止盈止损部分弹窗 计步器样式*/
+.kz-text .win .van-stepper .van-stepper__input{
+    margin-left: 32%;
+    background-color: transparent;
+    color: rgba(255,108,71,1);
+}
+.kz-text .win .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+}
+.kz-text .win .van-stepper .van-stepper__plus{
+    margin-left: 32%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+}
+.kz-text .loss .van-stepper .van-stepper__input{
+    margin-left: 32%;
+    background-color: transparent;
+    color: rgba(20,197,145,1);
+}
+.kz-text .loss .van-stepper .van-stepper__minus{
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+}
+.kz-text .loss .van-stepper .van-stepper__plus{
+    margin-left: 32%;
+    border-radius: 50%;
+    background-color: rgba(86,134,211,0.14);
+    color: rgba(86,134,211,1);
+    width: 20px;
+    height: 20px;
+}

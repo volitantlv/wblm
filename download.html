@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>玩币联盟</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .app {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('./downLoad_bg.png');
+            background-size: 100% 100%;
+        }
+
+        .app .container {
+            width: 100vw;
+            bottom: 20%;
+            position: absolute;
+        }
+
+        .app .bg {
+            position: fixed;
+            z-index: 2;
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background: url('./bg.png');
+            background-size: 100% 100%;
+        }
+
+        .app .container .btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 500;
+            width: 75%;
+            font-size: 22px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            color: #ff8906;
+            text-shadow: 2px 3px 3px #ffe3c5;
+            border-radius: 22px;
+            background-color: #fff;
+            box-shadow: 1px 6px 0px #ff8906;
+        }
+        .app .container .msg{
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 60px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="container">
+            <div class="btn" onclick="downLoad()">下载Android客户端</div> 
+            <div class="msg">版权：深圳前海保晟互联网金融服务有限公司</div>
+        </div>
+        <div class="bg" onclick="closebg()"></div>
+    </div>
+</body>
+<script>
+    let VersionUrl = 'http://47.102.128.188:8083/web/app/get-new-app?version=';
+    let DownloadUrl = 'http://47.102.128.188:8083/management-web/file/download?filename=';
+    let data = null;
+    function getDownloadUtl(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            switch (xhr.readyState) {
+                case 4:
+                    if (xhr.status == 200) {
+                        data = JSON.parse(xhr.response);
+                        DownloadName = data.data.appFileName;
+                        DownloadUrl += DownloadName;
+                    } else {
+                        alert('请求失败');
+                    }
+            }
+        }
+        xhr.open('GET', url);
+        xhr.send();
+    }
+    
+    // 判断是否在微信客户端中打开 
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        console.log(
+        ua); //mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, likegecko) version / 9.0 mobile / 13 b143 safari / 601.1
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function closebg() {
+        document.querySelector('.bg').style.display = "none";
+    }
+
+    function downLoad() {
+        let is = isWeiXin();
+        if (is) {
+            document.querySelector('.bg').style.display = "block";
+        } else {
+            window.location.href = DownloadUrl
+        }
+    }
+    window.onload = function () {
+        getDownloadUtl(VersionUrl);
+    }
+</script>
+
+</html>

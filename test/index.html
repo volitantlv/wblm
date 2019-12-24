@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel=icon href=faviticon.ico><title>玩币联盟</title><link href=css/about.ced44d4e.css rel=prefetch><link href=css/chunk-1ba035c4.c505c14d.css rel=prefetch><link href=css/chunk-21f836e7.a034229d.css rel=prefetch><link href=css/chunk-4d80c291.b14e2e76.css rel=prefetch><link href=css/chunk-510de773.5cf5b6a2.css rel=prefetch><link href=css/chunk-661bc57a.ce4a68af.css rel=prefetch><link href=css/chunk-7a6d9ee4.e94ac3b1.css rel=prefetch><link href=js/about.22fec6ad.js rel=prefetch><link href=js/chunk-1ba035c4.87291cfd.js rel=prefetch><link href=js/chunk-21f836e7.c9ac292b.js rel=prefetch><link href=js/chunk-4d80c291.4151344c.js rel=prefetch><link href=js/chunk-510de773.0c210582.js rel=prefetch><link href=js/chunk-661bc57a.ecab35b1.js rel=prefetch><link href=js/chunk-7a6d9ee4.4319f83a.js rel=prefetch><link href=css/app.c7c6d31a.css rel=preload as=style><link href=css/chunk-vendors.ffc46f85.css rel=preload as=style><link href=js/app.7f2327d3.js rel=preload as=script><link href=js/chunk-vendors.bf682cba.js rel=preload as=script><link href=css/chunk-vendors.ffc46f85.css rel=stylesheet><link href=css/app.c7c6d31a.css rel=stylesheet></head><body><noscript><strong></strong></noscript><div id=app></div><script>// document.body.addEventListener('touchmove', function (e) {
+        // e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+        // }, {passive: false}); //passive 参数不能省略，用来兼容ios和android
+    var wgtVer = null,
+      wgtUrl = null;
+    var DownBaseUrl = "http://47.102.128.188:8083/management-web/file/download?filename=";
+
+    function plusReady() {
+      // ......
+      // 获取本地应用资源版本号
+      plus.runtime.getProperty(plus.runtime.appid, function (inf) {
+        wgtVer = inf.version;
+        checkUpdate(inf.version)
+      });
+    }
+    if (window.plus) {
+      plusReady();
+    } else {
+      document.addEventListener('plusready', plusReady, false);
+    }
+    // 检测更新升级的文档 web/app/get-new-app?version=
+    var checkUrl = "http://47.102.128.188:8083/web/app/get-new-app?version=";
+
+    function checkUpdate(version) {
+      plus.nativeUI.showWaiting("检测更新...");
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        switch (xhr.readyState) {
+          case 4:
+            plus.nativeUI.closeWaiting();
+            if (xhr.status == 200) {
+              // plus.nativeUI.toast("检测到有可用的更新");
+              let data = JSON.parse(xhr.response)
+              if (data.data) {
+                wgtUrl = DownBaseUrl + data.data.appFileName;
+                downWgt()
+              } else {
+                // plus.nativeUI.alert("检测更新失败！");
+                return false
+              }
+            } else {
+              plus.nativeUI.toast("检测更新失败");
+            }
+            break;
+          default:
+            break;
+        }
+      }
+      xhr.open('GET', checkUrl + version);
+      xhr.send();
+    }
+
+    function downWgt() {
+      plus.nativeUI.showWaiting("下载wgt文件...");
+      plus.downloader.createDownload(wgtUrl, {
+        filename: "_doc/update/"
+      }, function (d, status) {
+        if (status == 200) {
+          // console.log("下载wgt成功：" + d.filename);
+          installWgt(d.filename); // 安装wgt包
+        } else {
+          // console.log("下载wgt失败！");
+          plus.nativeUI.alert("下载wgt失败！");
+        }
+        plus.nativeUI.closeWaiting();
+      }).start();
+    }
+    // 更行安装新的包
+    function installWgt(path) {
+      plus.nativeUI.showWaiting("安装wgt文件...");
+      plus.runtime.install(path, {}, function () {
+        plus.nativeUI.closeWaiting();
+        // console.log("安装wgt文件成功！");
+        plus.nativeUI.alert("应用资源更新完成！", function () {
+          plus.runtime.restart();
+        });
+      }, function (e) {
+        plus.nativeUI.closeWaiting();
+        // console.log("安装wgt文件失败[" + e.code + "]：" + e.message);
+        plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
+      });
+    }
+    // 获取url的地址
+    function geturl() {
+      let url, flag;
+      url = window.location.href.split('#/')[1];
+      if (url == "home") {
+        flag = true
+      } else if (url == "trade") {
+        flag = true
+      } else if (url == "user") {
+        flag = true
+      } else {
+        flag = false
+      }
+      return flag
+    };
+    document.addEventListener('plusready', function () {
+      // 获取网络状态 
+      document.addEventListener("netchange", function () {
+        var nt = plus.networkinfo.getCurrentType();
+        switch (nt) {
+          case plus.networkinfo.CONNECTION_ETHERNET:
+          case plus.networkinfo.CONNECTION_WIFI:
+            alert("切换到wifi!");
+            break;
+          case plus.networkinfo.CONNECTION_CELL2G:
+          case plus.networkinfo.CONNECTION_CELL3G:
+          case plus.networkinfo.CONNECTION_CELL4G:
+            alert("切换到4G网络!");
+            break;
+          default:
+            alert("无网络!");
+            break;
+        }
+      }, false);
+      // 调用安卓端的返回按键
+      var webview = plus.webview.currentWebview();
+      plus.key.addEventListener('backbutton', function () {
+        webview.canBack(function (e) {
+          if (geturl()) {
+            var first = null;
+            plus.key.addEventListener('backbutton', function () {
+              //首次按键，提示‘再按一次退出应用’
+              if (!first) {
+                first = new Date().getTime();
+                plus.nativeUI.toast("再按一次退出应用");
+                setTimeout(function () {
+                  first = null;
+                }, 1000);
+              } else {
+                if (new Date().getTime() - first < 1500) {
+                  plus.runtime.quit();
+                }
+              }
+            }, false);
+            return false;
+          }
+          if (e.canBack) {
+            webview.back();
+          }
+        })
+      });
+    });
+    //禁用ios的缩放  
+    // window.addEventListener(
+    //   "touchmove",
+    //   function (event) {
+    //     if (event.scale !== 1) {
+    //       event.preventDefault();
+    //     }
+    //   }, {
+    //     passive: false
+    //   }
+    // );
+    var lastTouchEnd = 0;
+    window.addEventListener('touchend', function (event) {
+    var now = Date.now();
+    if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd=now; }, false);</script><script src=js/chunk-vendors.bf682cba.js></script><script src=js/app.7f2327d3.js></script></body></html>
